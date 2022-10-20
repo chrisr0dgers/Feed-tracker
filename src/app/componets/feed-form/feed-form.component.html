@@ -1,6 +1,6 @@
 <div *ngIf="visible" class="modal--wrap"></div>
 <div *ngIf="visible" class="modal">
-  <form>
+  <form [formGroup]="feedForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
       <h3>Feed track</h3>
     </div>
@@ -9,19 +9,21 @@
         >Time</label
       >
       <input
+        formControlName="time"
         type="time"
         class="form-control"
         id="exampleFormControlInput1"
       />
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label"
+      <label for="duration" class="form-label"
         >Duration</label
       >
       <input
+        formControlName="duration"
         type="number"
         class="form-control"
-        id="exampleFormControlInput1"
+        id="duration"
       />
     </div>
     <div class="mb-3">
