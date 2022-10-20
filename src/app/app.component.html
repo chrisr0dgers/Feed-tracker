@@ -2,8 +2,9 @@
   <div class="row">
     <div class="col-lg-7 mx-auto">
       <button class="btn btn-primary btn-lg" (click)="toggleFeedForm()">Add Feed</button>
-      <button class="btn btn-primary btn-lg" (click)="showNappyForm()">Add Nappy</button>
+      <button class="btn btn-primary btn-lg" (click)="toggleNappyForm()">Add Nappy</button>
       <app-feed-form (closeModal)="toggleFeedForm()" [visible]="feedFormVisible"></app-feed-form>
+      <app-nappy-form (closeModal)="toggleNappyForm()" [visible]="nappyFormVisible"></app-nappy-form>
     </div>
   </div>
 </div>

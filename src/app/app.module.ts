@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FeedFormComponent } from './componets/feed-form/feed-form.component';
+import { NappyFormComponent } from './componets/nappy-form/nappy-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FeedFormComponent
+    FeedFormComponent,
+    NappyFormComponent
   ],
   imports: [
     BrowserModule,

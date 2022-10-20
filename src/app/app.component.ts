@@ -9,13 +9,14 @@ export class AppComponent {
   title = 'baby-tracker';
 
   feedFormVisible: boolean = false;
+  nappyFormVisible: boolean = false;
 
   toggleFeedForm() {
     this.feedFormVisible = !this.feedFormVisible;
     console.log(this.feedFormVisible);
   }
 
-  showNappyForm() {
-    alert('nappy form');
+  toggleNappyForm() {
+    this.nappyFormVisible = !this.nappyFormVisible;
   }
 }
