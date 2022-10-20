@@ -22,6 +22,11 @@
           <a ngbNavLink>Feed</a>
           <ng-template ngbNavContent>
             <p>Feed</p>
+            <div *ngFor="let feed of feeds">
+              <p>Time: {{ feed.time }}</p>
+              <p>Duration: {{ feed.duration }}</p>
+              <p>Date: {{ feed.date | date }}</p>
+            </div>
           </ng-template>
         </li>
         <li [ngbNavItem]="2">
@@ -36,7 +41,6 @@
     </div>
   </div>
 </div>
-
 <app-feed-form
   (closeModal)="toggleFeedForm()"
   [visible]="feedFormVisible"

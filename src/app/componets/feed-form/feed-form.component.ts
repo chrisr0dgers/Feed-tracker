@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FeedDataService } from 'src/app/services/feed-data.service';
 
 @Component({
   selector: 'app-feed-form',
@@ -11,7 +12,7 @@ export class FeedFormComponent implements OnInit {
   @Output() closeModal = new EventEmitter<boolean>();
   feedForm: FormGroup;
 
-  constructor() {}
+  constructor(private feedDataService:FeedDataService) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -30,7 +31,11 @@ export class FeedFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.feedForm.value);
-    // this.feedForm.reset();
+    const formData = {
+      ...this.feedForm.value,
+      date: new Date()
+    };
+    this.feedDataService.saveFeed(formData);
+    this.feedForm.reset();
   }
 }
