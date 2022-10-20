@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-feed-form',
@@ -23,13 +23,14 @@ export class FeedFormComponent implements OnInit {
 
   initForm() {
     this.feedForm = new FormGroup({
-      time: new FormControl,
-      duration: new FormControl,
+      time: new FormControl(null, Validators.required),
+      duration: new FormControl(null, Validators.required),
     });
     console.log(this.feedForm.value)
   }
 
   onSubmit() {
     console.log(this.feedForm.value);
+    // this.feedForm.reset();
   }
 }
