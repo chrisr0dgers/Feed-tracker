@@ -1,10 +1,47 @@
 <div class="container">
-  <div class="row">
+  <div class="row pt-3">
+    <div class="col-lg-7 mx-auto mb-4">
+      <button class="btn btn-primary btn-lg w-100" (click)="toggleFeedForm()">
+        Add Feed
+      </button>
+    </div>
     <div class="col-lg-7 mx-auto">
-      <button class="btn btn-primary btn-lg" (click)="toggleFeedForm()">Add Feed</button>
-      <button class="btn btn-primary btn-lg" (click)="toggleNappyForm()">Add Nappy</button>
-      <app-feed-form (closeModal)="toggleFeedForm()" [visible]="feedFormVisible"></app-feed-form>
-      <app-nappy-form (closeModal)="toggleNappyForm()" [visible]="nappyFormVisible"></app-nappy-form>
+      <button
+        class="btn btn-outline-secondary btn-lg w-100"
+        (click)="toggleNappyForm()"
+      >
+        Add Nappy
+      </button>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-lg-7">
+      <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+        <li [ngbNavItem]="1">
+          <a ngbNavLink>Feed</a>
+          <ng-template ngbNavContent>
+            <p>Feed</p>
+          </ng-template>
+        </li>
+        <li [ngbNavItem]="2">
+          <a ngbNavLink>Nappy</a>
+          <ng-template ngbNavContent>
+            <p>Nappy</p>
+          </ng-template>
+        </li>
+      </ul>
+      <!-- Outlet for bootstrap tabs -->
+      <div [ngbNavOutlet]="nav" class="mt-2"></div>
     </div>
   </div>
 </div>
+
+<app-feed-form
+  (closeModal)="toggleFeedForm()"
+  [visible]="feedFormVisible"
+></app-feed-form>
+<app-nappy-form
+  (closeModal)="toggleNappyForm()"
+  [visible]="nappyFormVisible"
+></app-nappy-form>

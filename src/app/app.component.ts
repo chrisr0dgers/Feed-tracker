@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'baby-tracker';
-
+  active = 1;
   feedFormVisible: boolean = false;
   nappyFormVisible: boolean = false;
 
