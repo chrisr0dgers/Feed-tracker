@@ -1,6 +1,6 @@
 export interface Feed {
   time: string;
   duration: number;
-  data: string;
+  date: string;
   id?: string;
 }

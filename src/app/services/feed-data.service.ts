@@ -14,6 +14,7 @@ export class FeedDataService {
       'https://baby-tracker-d8eb7-default-rtdb.europe-west1.firebasedatabase.app/feeds.json',
       feed
     ).subscribe();
+    this.fetchFeeds();
   }
 
   fetchFeeds() {

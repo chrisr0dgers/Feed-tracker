@@ -14,19 +14,46 @@
       </button>
     </div>
   </div>
-
   <div class="row mt-5">
-    <div class="col-lg-7">
+    <div *ngIf="lastFeed" class="col-6 mx-aut0">
+      <h3>Last Feed</h3>
+      <p>Time: {{ lastFeedData.time }}</p>
+      <p>Time Since: {{ lastFeedData.hours }}:{{ lastFeedData.minutes }}</p>
+      <p>Duration: {{ lastFeedData.duration }} mins</p>
+      {{ lastFeedData.date | date }}
+    </div>
+    <div *ngIf="lastFeed" class="col-6 mx-aut0">
+      <h3>Last Nappy</h3>
+      <p>Time: {{ lastFeedData.time }}</p>
+      <p>Time Since: {{ lastFeedData.hours }}:{{ lastFeedData.minutes }}</p>
+      <p>Duration: {{ lastFeedData.duration }} mins</p>
+      {{ lastFeedData.date | date }}
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-lg-7 mx-auto">
       <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
         <li [ngbNavItem]="1">
           <a ngbNavLink>Feed</a>
           <ng-template ngbNavContent>
-            <p>Feed</p>
-            <div *ngFor="let feed of feeds">
-              <p>Time: {{ feed.time }}</p>
-              <p>Duration: {{ feed.duration }}</p>
-              <p>Date: {{ feed.date | date }}</p>
-            </div>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Time</th>
+                  <th scope="col">Duration</th>
+                  <th scope="col">Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let feed of feeds; let i = index">
+                  <th scope="row">{{ i + 1 }}</th>
+                  <td>{{ feed.time }}</td>
+                  <td>{{ feed.duration }}</td>
+                  <td>{{ feed.date | date }}</td>
+                </tr>
+              </tbody>
+            </table>
           </ng-template>
         </li>
         <li [ngbNavItem]="2">

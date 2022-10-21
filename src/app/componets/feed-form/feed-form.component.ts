@@ -27,7 +27,6 @@ export class FeedFormComponent implements OnInit {
       time: new FormControl(null, Validators.required),
       duration: new FormControl(null, Validators.required),
     });
-    console.log(this.feedForm.value)
   }
 
   onSubmit() {
@@ -37,5 +36,6 @@ export class FeedFormComponent implements OnInit {
     };
     this.feedDataService.saveFeed(formData);
     this.feedForm.reset();
+    this.closeModal.emit(!this.visible);
   }
 }
