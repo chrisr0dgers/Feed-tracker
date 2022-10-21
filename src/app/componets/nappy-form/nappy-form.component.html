@@ -1,6 +1,6 @@
 <div *ngIf="visible" class="modal--wrap"></div>
 <div *ngIf="visible" class="modal">
-  <form>
+  <form [formGroup]="nappyForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
       <h3>Nappy track</h3>
     </div>
@@ -12,13 +12,14 @@
         type="time"
         class="form-control"
         id="time"
+        formControlName="time"
       />
     </div>
     <div class="mb-3">
       <label for="nappyType" class="form-label"
         >Nappy Type</label
       >
-      <select id="nappyType" class="form-control" name="nappyType" id="">
+      <select formControlName="type" id="nappyType" class="form-control" name="nappyType" id="">
         <option value="wet">Wet</option>
         <option value="wet">Dirty</option>
         <option value="wet">Wet & Dirty</option>
@@ -28,7 +29,7 @@
       <label for="notes" class="form-label"
         >Notes</label
       >
-      <textarea name="notes" id="notes" class="form-control" rows="3"></textarea>
+      <textarea formControlName="notes" name="notes" id="notes" class="form-control" rows="3"></textarea>
     </div>
     <div class="mb-3">
       <button type="submit" class="btn btn-primary me-2">Submit</button>
