@@ -34,8 +34,10 @@ export class FeedFormComponent implements OnInit {
       ...this.feedForm.value,
       date: new Date()
     };
-    this.feedDataService.saveFeed(formData);
-    this.feedForm.reset();
-    this.closeModal.emit(!this.visible);
+    if (this.feedForm.valid) {
+      this.feedDataService.saveFeed(formData);
+      this.feedForm.reset();
+      this.closeModal.emit(!this.visible);
+    }
   }
 }
