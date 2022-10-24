@@ -8,7 +8,6 @@ import { Feed } from 'src/app/feed.module';
 })
 export class FeedTimelineComponent implements OnInit {
   @Input() feedData: Feed[];
-  @Input() feedCount: number;
 
   constructor() { }
 

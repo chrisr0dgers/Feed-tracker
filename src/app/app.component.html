@@ -1,4 +1,15 @@
 <div class="container">
+  <div class="row pt-3 text-center">
+    <div class="col-12 ">
+      <p>Todays counts</p>
+    </div>
+    <div class="col-6">
+      <p>Feed count: {{ todaysFeedCount }}</p>
+    </div>
+    <div class="col-6">
+      <p>Nappy count: *</p>
+    </div>
+  </div>
   <div class="row pt-3">
     <div class="col-lg-7 mx-auto mb-4">
       <button class="btn btn-primary btn-lg w-100" (click)="toggleFeedForm()">
@@ -21,7 +32,6 @@
       <ng-template ngbNavContent>
         <app-feed-timeline
           [feedData]="lastFeeds"
-          [feedCount]="todaysFeedCount"
         ></app-feed-timeline>
       </ng-template>
     </li>
