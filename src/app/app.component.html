@@ -15,16 +15,26 @@
     </div>
   </div>
   <div class="row mt-4">
-    <div *ngIf="lastFeedData" class="col-6 mx-auto">
+    <div *ngIf="lastFeedData" class="col-12 mx-auto">
       <h3>Last Feed</h3>
-      <p>Time Since: {{ lastFeedData.hours }}:{{ lastFeedData.minutes }}</p>
-      <p>Duration: {{ lastFeedData.duration }} mins</p>
-      <p>Time: {{ lastFeedData.time }}</p>
-      <p>Date: {{ lastFeedData.date | date }}</p>
+      <p class="mb-0">{{ lastFeedData.date | date }}</p>
+
+      <div class="d-flex align-items-center">
+        <img class="me-2" src="/assets/images/left.png" alt="image" />
+        <div>
+          <p class="mb-0">
+            <strong>{{ lastFeedData.time }}</strong
+            >, {{ lastFeedData.duration }}m, {{ lastFeedData.feedType }}
+          </p>
+          <p class="mb-0">
+            Time Since: {{ lastFeedData.hours }}h {{ lastFeedData.minutes }}m
+          </p>
+        </div>
+      </div>
     </div>
     <div *ngIf="lastNappy" class="col-6 mx-auto">
       <h3>Last Nappy</h3>
-      <p>Type: {{ lastNappy.type }}</p>
+      <p>Type: {{ lastNappy.type | titlecase }}</p>
       <p>Time: {{ lastNappy.time }}</p>
       <p>Date: {{ lastFeedData.date | date }}</p>
     </div>

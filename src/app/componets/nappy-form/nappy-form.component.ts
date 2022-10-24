@@ -21,7 +21,7 @@ export class NappyFormComponent implements OnInit {
   initForm() {
     this.nappyForm = new FormGroup({
       time: new FormControl(null, Validators.required),
-      type: new FormControl(null, Validators.required),
+      type: new FormControl('wet', Validators.required),
       notes: new FormControl(null),
     });
   }

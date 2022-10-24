@@ -5,9 +5,7 @@
       <h3>Feed track</h3>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label"
-        >Time</label
-      >
+      <label for="exampleFormControlInput1" class="form-label">Time</label>
       <input
         formControlName="time"
         type="time"
@@ -16,9 +14,7 @@
       />
     </div>
     <div class="mb-3">
-      <label for="duration" class="form-label"
-        >Duration</label
-      >
+      <label for="duration" class="form-label">Duration</label>
       <input
         formControlName="duration"
         type="number"
@@ -27,8 +23,35 @@
       />
     </div>
     <div class="mb-3">
+      <label for="duration" class="form-label">Feed type</label>
+      <select
+        formControlName="feedType"
+        id="feedType"
+        class="form-select"
+        name="feedType"
+        id=""
+        (change)="onFeedTypeChanged($event)"
+      >
+        <option value="default">Feed type</option>
+        <option value="Left breast">Left breast</option>
+        <option value="Right breast">Right breast</option>
+        <option value="bottle">Bottle</option>
+      </select>
+    </div>
+    <div class="mb-3" *ngIf="selectedFeedType === 'bottle'">
+      <label for="duration" class="form-label">Bottle size (oz)</label>
+      <input
+        formControlName="bottleSize"
+        type="number"
+        class="form-control"
+        id="bottleSize"
+      />
+    </div>
+    <div class="mb-3">
       <button type="submit" class="btn btn-primary me-2">Submit</button>
-      <button type="button" (click)="hideModal()" class="btn btn-danger">Cancel</button>
+      <button type="button" (click)="hideModal()" class="btn btn-danger">
+        Cancel
+      </button>
     </div>
   </form>
 </div>
