@@ -1,7 +1,7 @@
 <!-- last 4 feeds -->
 <div class="row mt-4">
   <div *ngIf="feedData" class="col-9 mx-auto">
-    <h3>Last Feeds</h3>
+    <h5>Todays Feed count: {{ feedCount }}</h5>
     <div
       class="feed__timeline"
       *ngFor="let feed of feedData; let i = index"

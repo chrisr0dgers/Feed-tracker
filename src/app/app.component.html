@@ -14,7 +14,7 @@
       </button>
     </div>
   </div>
-  <app-feed-timeline [feedData]="lastFeeds"></app-feed-timeline>
+  <app-feed-timeline [feedData]="lastFeeds" [feedCount]="todaysFeedCount"></app-feed-timeline>
 </div>
 <app-feed-form
   (closeModal)="toggleFeedForm()"
