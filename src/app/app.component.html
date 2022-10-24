@@ -14,23 +14,22 @@
       </button>
     </div>
   </div>
-  <div class="row mt-5">
-    <div *ngIf="lastFeed" class="col-6 mx-aut0">
+  <div class="row mt-4">
+    <div *ngIf="lastFeedData" class="col-6 mx-auto">
       <h3>Last Feed</h3>
-      <p>Time: {{ lastFeedData.time }}</p>
       <p>Time Since: {{ lastFeedData.hours }}:{{ lastFeedData.minutes }}</p>
       <p>Duration: {{ lastFeedData.duration }} mins</p>
-      {{ lastFeedData.date | date }}
+      <p>Time: {{ lastFeedData.time }}</p>
+      <p>Date: {{ lastFeedData.date | date }}</p>
     </div>
-    <div *ngIf="lastFeed" class="col-6 mx-aut0">
+    <div *ngIf="lastNappy" class="col-6 mx-auto">
       <h3>Last Nappy</h3>
-      <p>Time: {{ lastFeedData.time }}</p>
-      <p>Time Since: {{ lastFeedData.hours }}:{{ lastFeedData.minutes }}</p>
-      <p>Duration: {{ lastFeedData.duration }} mins</p>
-      {{ lastFeedData.date | date }}
+      <p>Type: {{ lastNappy.type }}</p>
+      <p>Time: {{ lastNappy.time }}</p>
+      <p>Date: {{ lastFeedData.date | date }}</p>
     </div>
   </div>
-  <div class="row mt-5">
+  <div class="row mt-3">
     <div class="col-lg-7 mx-auto">
       <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
         <li [ngbNavItem]="1">

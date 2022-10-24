@@ -69,6 +69,7 @@ export class AppComponent implements OnInit {
   onFetchNappies() {
     this.nappyDataService.fetchFeeds().subscribe((savedNappys) => {
       this.nappies = savedNappys;
+      this.lastNappy = savedNappys.slice(-1)[0]
       console.log(savedNappys);
     });
   }
