@@ -31,6 +31,15 @@ export class NappyFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.nappyForm.value)
+    const nappyData = {
+      ...this.nappyForm.value,
+      date: new Date(),
+    };
+
+    if (this.nappyForm.valid) {
+      this.nappyDataService.saveNappy(nappyData);
+      this.nappyForm.reset();
+      this.closeModal.emit(!this.visible);
+    }
   }
 }
