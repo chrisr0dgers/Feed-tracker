@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Feed } from './feed.module';
+import { Nappy } from './nappy.module';
 import { FeedDataService } from './services/feed-data.service';
+import { NappyDataService } from './services/nappy-data.service';
 
 @Component({
   selector: 'app-root',
@@ -9,17 +11,27 @@ import { FeedDataService } from './services/feed-data.service';
 })
 export class AppComponent implements OnInit {
   title = 'baby-tracker';
+  // boostrap tabs
+  active = 1;
+  // Feeds
   feeds: Feed[] = [];
   lastFeed: Feed;
   lastFeedData = {};
-  active = 1;
+  // Nappys
+  nappies: Nappy[];
+  lastNappy: Nappy;
+  // Popup states
   feedFormVisible: boolean = false;
   nappyFormVisible: boolean = false;
 
-  constructor(private feedDataService: FeedDataService) {}
+  constructor(
+    private feedDataService: FeedDataService,
+    private nappyDataService: NappyDataService
+  ) {}
 
   ngOnInit(): void {
     this.onFetchFeeds();
+    this.onFetchNappies();
   }
 
   toggleFeedForm() {
@@ -30,6 +42,7 @@ export class AppComponent implements OnInit {
     this.nappyFormVisible = !this.nappyFormVisible;
   }
 
+  // This needs tidied
   onFetchFeeds() {
     this.feedDataService.fetchFeeds().subscribe((savedFeeds) => {
       this.feeds = savedFeeds;
@@ -44,15 +57,19 @@ export class AppComponent implements OnInit {
         ...this.lastFeed,
         ...this.convertTime(+mins),
       };
-    console.log(this.lastFeedData);
-
     });
   }
 
   convertTime(mins) {
     const hours = Math.floor(mins / 60);
     const minutes = Math.floor(mins % 60);
-    console.log({ hours, minutes });
     return { hours, minutes };
+  }
+
+  onFetchNappies() {
+    this.nappyDataService.fetchFeeds().subscribe((savedNappys) => {
+      this.nappies = savedNappys;
+      console.log(savedNappys);
+    });
   }
 }

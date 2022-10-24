@@ -60,6 +60,24 @@
           <a ngbNavLink>Nappy</a>
           <ng-template ngbNavContent>
             <p>Nappy</p>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Time</th>
+                  <th scope="col">Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let nappy of nappies; let i = index">
+                  <th scope="row">{{ i + 1 }}</th>
+                  <td>{{ nappy.type | titlecase }}</td>
+                  <td>{{ nappy.time }}</td>
+                  <td>{{ nappy.date | date }}</td>
+                </tr>
+              </tbody>
+            </table>
           </ng-template>
         </li>
       </ul>
