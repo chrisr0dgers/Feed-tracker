@@ -1,0 +1,41 @@
+<!-- last 4 nappys -->
+<div class="row mt-4">
+  <div *ngIf="nappyData" class="col-9 mx-auto">
+    <div
+      class="feed__timeline d-flex"
+      *ngFor="let nappy of nappyData; let i = index"
+      [ngClass]="i === 0 ? 'pt-1' : 'pt-3'"
+    >
+      <div class="d-flex align-items-center mx-auto w-75">
+        <div [ngSwitch]="nappy.type">
+          <img
+            *ngSwitchCase="'Wet'"
+            class="me-2"
+            src="/assets/images/wet.png"
+            alt="image"
+          />
+          <img
+            *ngSwitchCase="'Dirty'"
+            class="me-2"
+            src="/assets/images/dirty.png"
+            alt="image"
+          />
+          <img
+            *ngSwitchCase="'Wet & Dirty'"
+            class="me-2"
+            src="/assets/images/wet-dirty.png"
+            alt="image"
+          />
+        </div>
+        <div>
+          <p class="mb-0">{{ nappy.date | date }}</p>
+          <p class="mb-0">
+            <strong>{{ nappy.time }}</strong
+            >, {{ nappy.type | titlecase }}
+          </p>
+        </div>
+      </div>
+      <span class="feed__timeline--border"></span>
+    </div>
+  </div>
+</div>

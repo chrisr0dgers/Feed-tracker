@@ -10,9 +10,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FeedHistoryComponent } from './components/feed-history/feed-history.component';
 import { FeedTimelineComponent } from './components/feed-timeline/feed-timeline.component';
+import { NappyHistoryComponent } from './components/nappy-history/nappy-history.component';
+import { NappyTimelineComponent } from './components/nappy-timeline/nappy-timeline.component';
 
 @NgModule({
-  declarations: [AppComponent, FeedFormComponent, NappyFormComponent, FeedHistoryComponent, FeedTimelineComponent],
+  declarations: [AppComponent, FeedFormComponent, NappyFormComponent, FeedHistoryComponent, FeedTimelineComponent, NappyHistoryComponent, NappyTimelineComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -12,14 +12,15 @@ import { NappyDataService } from './services/nappy-data.service';
 export class AppComponent implements OnInit {
   title = 'baby-tracker';
   // boostrap tabs
-  active = 1;
+  active = 2;
   // Feeds
   feeds: Feed[] = [];
   lastFeeds: Feed[] = [];
   todaysFeedCount: number = 0;
   // Nappys
   nappies: Nappy[];
-  lastNappy: Nappy;
+  lastNappies: Nappy[] = [];
+  todaysNappyCount: number = 0;
   // Popup states
   feedFormVisible: boolean = false;
   nappyFormVisible: boolean = false;
@@ -53,7 +54,7 @@ export class AppComponent implements OnInit {
         );
         const mins = (time / (1000 * 60)).toFixed(1);
         if (new Date().toDateString() === new Date(feed.date).toDateString()) {
-          this.todaysFeedCount ++;
+          this.todaysFeedCount++;
         }
         feed = {
           ...feed,
@@ -75,8 +76,13 @@ export class AppComponent implements OnInit {
   onFetchNappies() {
     this.nappyDataService.fetchFeeds().subscribe((savedNappys) => {
       this.nappies = savedNappys;
-      this.lastNappy = savedNappys.slice(-1)[0];
-      console.log(savedNappys);
+
+      for (let nappy of this.nappies.slice(-10)) {
+        if (new Date().toDateString() === new Date(nappy.date).toDateString()) {
+          this.todaysNappyCount++;
+        }
+        this.lastNappies.push(nappy);
+      }
     });
   }
 }
