@@ -32,7 +32,7 @@
         id=""
         (change)="onFeedTypeChanged($event)"
       >
-        <option value="default">Feed type</option>
+        <option value="" disabled>Feed type</option>
         <option value="Left breast">Left breast</option>
         <option value="Right breast">Right breast</option>
         <option value="Both breasts">Both breasts</option>
@@ -49,7 +49,7 @@
       />
     </div>
     <div class="mb-3">
-      <button type="submit" class="btn btn-primary me-2">Submit</button>
+      <button [disabled]="!this.feedForm.valid" type="submit" class="btn btn-primary me-2">Submit</button>
       <button type="button" (click)="hideModal()" class="btn btn-danger">
         Cancel
       </button>

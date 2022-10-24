@@ -32,7 +32,7 @@ export class FeedFormComponent implements OnInit {
     this.feedForm = new FormGroup({
       time: new FormControl(null, Validators.required),
       duration: new FormControl(null, Validators.required),
-      feedType: new FormControl('default', Validators.required),
+      feedType: new FormControl('', Validators.required),
       bottleSize: new FormControl(null),
     });
   }
