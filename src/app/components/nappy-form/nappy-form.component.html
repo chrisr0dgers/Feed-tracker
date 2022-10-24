@@ -20,6 +20,7 @@
         >Nappy Type</label
       >
       <select formControlName="type" id="nappyType" class="form-select" name="nappyType" id="">
+        <option disabled value="">Nappy type</option>
         <option value="Wet">Wet</option>
         <option value="Dirty">Dirty</option>
         <option value="Wet & Dirty">Wet & Dirty</option>
@@ -32,7 +33,7 @@
       <textarea formControlName="notes" name="notes" id="notes" class="form-control" rows="3"></textarea>
     </div>
     <div class="mb-3">
-      <button type="submit" class="btn btn-primary me-2">Submit</button>
+      <button [disabled]="!this.nappyForm.valid" type="submit" class="btn btn-primary me-2">Submit</button>
       <button type="button" (click)="hideModal()" class="btn btn-danger">Cancel</button>
     </div>
   </form>

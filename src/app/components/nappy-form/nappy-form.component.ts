@@ -21,13 +21,14 @@ export class NappyFormComponent implements OnInit {
   initForm() {
     this.nappyForm = new FormGroup({
       time: new FormControl(null, Validators.required),
-      type: new FormControl('wet', Validators.required),
+      type: new FormControl('', Validators.required),
       notes: new FormControl(null),
     });
   }
 
   hideModal() {
     this.closeModal.emit(!this.visible);
+    this.nappyForm.reset();
   }
 
   onSubmit() {
@@ -36,7 +37,7 @@ export class NappyFormComponent implements OnInit {
       date: new Date(),
     };
 
-    if (this.nappyForm.valid) {
+    if (this.nappyForm.valid && this.nappyForm.value.type != '') {
       this.nappyDataService.saveNappy(nappyData);
       this.nappyForm.reset();
       this.closeModal.emit(!this.visible);
