@@ -1,0 +1,28 @@
+<!-- last 4 feeds -->
+<div class="row mt-4">
+  <div *ngIf="feedData" class="col-9 mx-auto">
+    <h3>Last Feeds</h3>
+    <div
+      class="feed__timeline"
+      *ngFor="let feed of feedData; let i = index"
+      [ngClass]="i === 0 ? 'pt-1' : 'pt-3'"
+    >
+      <div>
+        <p class="ms-4 mb-3 ps-2">{{ feed.hours }}h {{ feed.minutes }}m</p>
+      </div>
+      <div class="d-flex align-items-center">
+        <img class="me-2" src="/assets/images/left.png" alt="image" />
+        <div>
+          <p class="mb-0">{{ feed.date | date }}</p>
+          <p class="mb-0">
+            <strong>{{ feed.time }}</strong
+            >, {{ feed.duration }}m,
+            <span *ngIf="feed.bottleSize">{{ feed.bottleSize }}oz,</span>
+            {{ feed.feedType }}
+          </p>
+        </div>
+      </div>
+      <span class="feed__timeline--border"></span>
+    </div>
+  </div>
+</div>

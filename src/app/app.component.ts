@@ -15,8 +15,7 @@ export class AppComponent implements OnInit {
   active = 1;
   // Feeds
   feeds: Feed[] = [];
-  lastFeed: Feed;
-  lastFeedData = {};
+  lastFeeds: Feed[]= [];
   // Nappys
   nappies: Nappy[];
   lastNappy: Nappy;
@@ -46,17 +45,24 @@ export class AppComponent implements OnInit {
   onFetchFeeds() {
     this.feedDataService.fetchFeeds().subscribe((savedFeeds) => {
       this.feeds = savedFeeds;
-      this.lastFeed = savedFeeds.slice(-1)[0];
 
-      const time = Math.abs(
-        new Date(this.lastFeed.date).getTime() - new Date().getTime()
-      );
-      const mins = (time / (1000 * 60)).toFixed(1);
+      for (let feed of savedFeeds.slice(-4)) {
 
-      this.lastFeedData = {
-        ...this.lastFeed,
-        ...this.convertTime(+mins),
-      };
+        const time = Math.abs(
+          new Date(feed.date).getTime() - new Date().getTime()
+        );
+        const mins = (time / (1000 * 60)).toFixed(1);
+
+        feed = {
+          ...feed,
+          ...this.convertTime(+mins),
+        };
+
+        this.lastFeeds.push(feed);
+      }
+      this.lastFeeds = this.lastFeeds.reverse();
+
+      console.log(this.lastFeeds);
     });
   }
 

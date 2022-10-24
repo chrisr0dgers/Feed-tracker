@@ -1,0 +1,14 @@
+.feed {
+  &__timeline {
+    position: relative;
+    &--border {
+      background-color: rgba(133, 122, 122, 0.498);
+      width: 1px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 20px;
+      z-index: -1;
+    }
+  }
+}
