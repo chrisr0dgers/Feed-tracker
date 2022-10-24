@@ -12,7 +12,7 @@ import { NappyDataService } from './services/nappy-data.service';
 export class AppComponent implements OnInit {
   title = 'baby-tracker';
   // boostrap tabs
-  active = 2;
+  active = 1;
   // Feeds
   feeds: Feed[] = [];
   lastFeeds: Feed[] = [];
