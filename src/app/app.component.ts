@@ -43,22 +43,23 @@ export class AppComponent implements OnInit {
     this.nappyFormVisible = !this.nappyFormVisible;
   }
 
+  fetchUpdatedFeeds(data: Feed) {
+    data = {
+      ...data,
+      ...this.timeSinceLastFeed(data),
+    };
+    this.lastFeeds.unshift(data);
+  }
+
   // This needs tidied
   onFetchFeeds() {
     this.feedDataService.fetchFeeds().subscribe((savedFeeds) => {
       this.feeds = savedFeeds;
 
       for (let feed of savedFeeds.slice(-10)) {
-        const time = Math.abs(
-          new Date(feed.date).getTime() - new Date().getTime()
-        );
-        const mins = (time / (1000 * 60)).toFixed(1);
-        if (new Date().toDateString() === new Date(feed.date).toDateString()) {
-          this.todaysFeedCount++;
-        }
         feed = {
           ...feed,
-          ...this.convertTime(+mins),
+          ...this.timeSinceLastFeed(feed),
         };
 
         this.lastFeeds.push(feed);
@@ -67,9 +68,15 @@ export class AppComponent implements OnInit {
     });
   }
 
-  convertTime(mins) {
-    const hours = Math.floor(mins / 60);
-    const minutes = Math.floor(mins % 60);
+  timeSinceLastFeed(feed) {
+    const time = Math.abs(new Date(feed.date).getTime() - new Date().getTime());
+    const mins = (time / (1000 * 60)).toFixed(1);
+    if (new Date().toDateString() === new Date(feed.date).toDateString()) {
+      this.todaysFeedCount++;
+    }
+    const hours = Math.floor(+mins / 60);
+    const minutes = Math.floor(+mins % 60);
+
     return { hours, minutes };
   }
 

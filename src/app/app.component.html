@@ -48,6 +48,7 @@
 </div>
 <app-feed-form
   (closeModal)="toggleFeedForm()"
+  (newFeed)="fetchUpdatedFeeds($event)"
   [visible]="feedFormVisible"
 ></app-feed-form>
 <app-nappy-form

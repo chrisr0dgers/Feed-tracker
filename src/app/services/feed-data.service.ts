@@ -7,6 +7,7 @@ import { Feed } from '../feed.module';
   providedIn: 'root',
 })
 export class FeedDataService {
+
   constructor(private http: HttpClient) {}
 
   saveFeed(feed: Feed) {
@@ -14,7 +15,6 @@ export class FeedDataService {
       'https://baby-tracker-d8eb7-default-rtdb.europe-west1.firebasedatabase.app/feeds.json',
       feed
     ).subscribe();
-    this.fetchFeeds();
   }
 
   fetchFeeds() {

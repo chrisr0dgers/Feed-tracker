@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Feed } from 'src/app/feed.module';
 import { FeedDataService } from 'src/app/services/feed-data.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { FeedDataService } from 'src/app/services/feed-data.service';
 export class FeedFormComponent implements OnInit {
   @Input() visible: boolean = false;
   @Output() closeModal = new EventEmitter<boolean>();
+  @Output() newFeed = new EventEmitter<Feed>();
   feedForm: FormGroup;
   selectedFeedType: string = 'default';
 
@@ -46,6 +48,7 @@ export class FeedFormComponent implements OnInit {
       this.feedDataService.saveFeed(formData);
       this.feedForm.reset();
       this.closeModal.emit(!this.visible);
+      this.newFeed.emit(formData);
     }
   }
 }

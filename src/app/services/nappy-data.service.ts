@@ -15,9 +15,7 @@ export class NappyDataService {
         'https://baby-tracker-d8eb7-default-rtdb.europe-west1.firebasedatabase.app/nappy.json',
         nappy
       )
-      .subscribe((response) => {
-        console.log(response);
-      });
+      .subscribe();
   }
 
   fetchFeeds() {
@@ -31,7 +29,7 @@ export class NappyDataService {
           for (const nappy in nappys) {
             feedArray.push(nappys[nappy]);
           }
-          return feedArray;
+          return feedArray.reverse();
         })
       );
   }
