@@ -69,13 +69,15 @@ export class AppComponent implements OnInit {
   }
 
   timeSinceLastFeed(feed) {
-    const time = Math.abs(new Date(feed.date).getTime() - new Date().getTime());
-    const mins = (time / (1000 * 60)).toFixed(1);
+    const time = Math.abs(new Date().getTime() - Date.parse(feed.date));
+    const mins = (time / (1000 * 60) + feed.duration).toFixed(1);
+    let hours = Math.floor(+mins / 60);
+    const minutes = Math.round(+mins % 60);
+
+    console.log(mins);
     if (new Date().toDateString() === new Date(feed.date).toDateString()) {
       this.todaysFeedCount++;
     }
-    const hours = Math.floor(+mins / 60);
-    const minutes = Math.floor(+mins % 60);
 
     return { hours, minutes };
   }
