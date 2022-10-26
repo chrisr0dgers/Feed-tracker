@@ -82,7 +82,7 @@ export class HomeComponent implements OnInit {
   }
 
   onFetchNappies() {
-    this.nappyDataService.fetchFeeds().subscribe((savedNappys) => {
+    this.nappyDataService.fetchNappies().subscribe((savedNappys) => {
       this.nappies = savedNappys;
 
       for (let nappy of this.nappies) {

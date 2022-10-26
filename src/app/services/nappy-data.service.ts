@@ -18,7 +18,7 @@ export class NappyDataService {
       .subscribe();
   }
 
-  fetchFeeds() {
+  fetchNappies() {
     return this.http
       .get<Nappy[]>(
         'https://baby-tracker-d8eb7-default-rtdb.europe-west1.firebasedatabase.app/nappy.json'

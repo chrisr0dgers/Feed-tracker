@@ -8,11 +8,11 @@ import { NappyFormComponent } from './components/nappy-form/nappy-form.component
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FeedTimelineComponent } from './components/feed-timeline/feed-timeline.component';
-import { NappyHistoryComponent } from './components/nappy-history/nappy-history.component';
 import { NappyTimelineComponent } from './components/nappy-timeline/nappy-timeline.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FeedHistoryComponent } from './pages/feed-history/feed-history.component';
 import { NavComponent } from './components/nav/nav.component';
+import { NappyHistoryComponent } from './pages/nappy-history/nappy-history.component';
 
 @NgModule({
   declarations: [
@@ -22,9 +22,9 @@ import { NavComponent } from './components/nav/nav.component';
     FeedTimelineComponent,
     NappyTimelineComponent,
     HomeComponent,
-    NappyHistoryComponent,
     FeedHistoryComponent,
     NavComponent,
+    NappyHistoryComponent,
   ],
   imports: [
     BrowserModule,
