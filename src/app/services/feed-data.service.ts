@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-import { Feed } from '../feed.module';
+import { Feed } from '../feed.model';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +9,7 @@ import { Feed } from '../feed.module';
 export class FeedDataService {
 
   constructor(private http: HttpClient) {}
+  public globalFeeds: Feed[];
 
   saveFeed(feed: Feed) {
     this.http.post<{ name: string }>(
@@ -28,6 +29,7 @@ export class FeedDataService {
           for (const feed in feeds) {
             feedArray.push(feeds[feed]);
           }
+          this.globalFeeds = feedArray;
           return feedArray;
         })
       );

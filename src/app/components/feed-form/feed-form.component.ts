@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Feed } from 'src/app/feed.module';
+import { Feed } from 'src/app/feed.model';
 import { FeedDataService } from 'src/app/services/feed-data.service';
 
 @Component({

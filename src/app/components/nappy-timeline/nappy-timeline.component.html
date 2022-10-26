@@ -1,8 +1,8 @@
 <!-- last 4 nappys -->
-<div class="row mt-4">
+<div class="row mt-4 mb-4">
   <div *ngIf="nappyData" class="col-9 mx-auto">
     <div
-      class="feed__timeline d-flex"
+      class="feed__timeline col-8 mx-auto d-flex"
       *ngFor="let nappy of nappyData | slice:0:10; let i=index"
       [ngClass]="i === 0 ? 'pt-1' : 'pt-3'"
     >

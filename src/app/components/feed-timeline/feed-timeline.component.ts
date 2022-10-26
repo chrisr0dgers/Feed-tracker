@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Feed } from 'src/app/feed.module';
+import { Feed } from 'src/app/feed.model';
 
 @Component({
   selector: 'app-feed-timeline',

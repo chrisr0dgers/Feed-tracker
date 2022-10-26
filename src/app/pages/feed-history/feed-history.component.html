@@ -1,0 +1,44 @@
+<app-nav></app-nav>
+
+<div class="row pt-3 text-center">
+  <div class="col-12">
+    <h1>Feed history</h1>
+  </div>
+</div>
+<div class="row pt-3 text-center">
+  <div class="col-12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Time</th>
+          <th scope="col">Duration</th>
+          <th scope="col">Feed type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let feed of paginatedFeeds; index as i">
+          <td>{{ feed.date | date }}</td>
+          <td>
+            {{ feed.time }}
+          </td>
+          <td>{{ feed.duration }}m</td>
+          <td>
+            {{ feed.feedType === "Bottle" ? feed.bottleSize + "oz" : "" }}
+            {{ feed.feedType }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="d-flex justify-content-center p-2">
+      <ngb-pagination
+        [collectionSize]="feeds.length"
+        [(page)]="page"
+        [pageSize]="pageSize"
+        (pageChange)="refreshFeeds()"
+      >
+      </ngb-pagination>
+    </div>
+  </div>
+</div>
