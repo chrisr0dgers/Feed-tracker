@@ -3,7 +3,7 @@
   <div *ngIf="nappyData" class="col-9 mx-auto">
     <div
       class="feed__timeline d-flex"
-      *ngFor="let nappy of nappyData; let i = index"
+      *ngFor="let nappy of nappyData | slice:0:10; let i=index"
       [ngClass]="i === 0 ? 'pt-1' : 'pt-3'"
     >
       <div class="d-flex align-items-center mx-auto w-75">

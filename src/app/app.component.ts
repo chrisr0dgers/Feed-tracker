@@ -86,7 +86,7 @@ export class AppComponent implements OnInit {
     this.nappyDataService.fetchFeeds().subscribe((savedNappys) => {
       this.nappies = savedNappys;
 
-      for (let nappy of this.nappies.slice(-10)) {
+      for (let nappy of this.nappies) {
         if (new Date().toDateString() === new Date(nappy.date).toDateString()) {
           this.todaysNappyCount++;
         }

@@ -25,11 +25,11 @@ export class NappyDataService {
       )
       .pipe(
         map((nappys) => {
-          const feedArray: Nappy[] = [];
+          const nappyArray: Nappy[] = [];
           for (const nappy in nappys) {
-            feedArray.push(nappys[nappy]);
+            nappyArray.push(nappys[nappy]);
           }
-          return feedArray.reverse();
+          return nappyArray.reverse();
         })
       );
   }
