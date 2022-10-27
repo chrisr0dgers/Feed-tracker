@@ -73,7 +73,6 @@ export class HomeComponent implements OnInit {
     let hours = Math.floor(+mins / 60);
     const minutes = Math.round(+mins % 60);
 
-    console.log(mins);
     if (new Date().toDateString() === new Date(feed.date).toDateString()) {
       this.todaysFeedCount++;
     }
