@@ -10,20 +10,24 @@ import { FeedDataService } from 'src/app/services/feed-data.service';
 export class FeedHistoryComponent implements OnInit {
   feeds: Feed[];
   paginatedFeeds;
+  collectionLength: number;
   page = 1;
   pageSize = 7;
 
-  constructor(private feedDataService: FeedDataService) {}
+  constructor(private feedDataService: FeedDataService) {
+  }
 
   ngOnInit(): void {
-    this.onFetchFeeds();
+    this.feedDataService.fetchFeeds();
+    this.feedDataService.feeds.subscribe((feeds) => {
+      this.feeds = feeds;
+      this.collectionLength = this.feeds.length;
+      this.refreshFeeds();
+    });
   }
 
   onFetchFeeds() {
-    this.feedDataService.fetchFeeds().subscribe((savedFeeds) => {
-      this.feeds = savedFeeds.reverse();
-      this.refreshFeeds();
-    });
+    this.feedDataService.fetchFeeds();
   }
 
   refreshFeeds() {

@@ -33,7 +33,7 @@
 
     <div class="d-flex justify-content-center p-2">
       <ngb-pagination
-        [collectionSize]="feeds.length"
+        [collectionSize]="collectionLength"
         [(page)]="page"
         [pageSize]="pageSize"
         (pageChange)="refreshFeeds()"

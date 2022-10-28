@@ -52,7 +52,8 @@ export class HomeComponent implements OnInit {
 
   // This needs tidied
   onFetchFeeds() {
-    this.feedDataService.fetchFeeds().subscribe((savedFeeds) => {
+    this.feedDataService.fetchFeeds();
+    this.feedDataService.feeds.subscribe((savedFeeds) => {
       this.feeds = savedFeeds;
 
       for (let feed of savedFeeds.slice(-10)) {
