@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Nappy } from 'src/app/nappy.model';
 import { NappyDataService } from 'src/app/services/nappy-data.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { NappyDataService } from 'src/app/services/nappy-data.service';
 export class NappyFormComponent implements OnInit {
   @Input() visible: boolean = false;
   @Output() closeModal = new EventEmitter<boolean>();
+  @Output() newNappy = new EventEmitter<Nappy>();
   nappyForm: FormGroup;
 
   constructor(private nappyDataService: NappyDataService) {}
@@ -41,6 +43,7 @@ export class NappyFormComponent implements OnInit {
       this.nappyDataService.saveNappy(nappyData);
       this.nappyForm.reset();
       this.closeModal.emit(!this.visible);
+      this.newNappy.emit(nappyData);
     }
   }
 }

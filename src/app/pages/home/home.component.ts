@@ -50,6 +50,10 @@ export class HomeComponent implements OnInit {
     this.lastFeeds.unshift(data);
   }
 
+  fetchUpdatedNappys(data: Nappy) {
+    this.lastNappies.unshift(data);
+  }
+
   // This needs tidied
   onFetchFeeds() {
     this.feedDataService.fetchFeeds();

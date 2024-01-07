@@ -50,5 +50,6 @@
 ></app-feed-form>
 <app-nappy-form
   (closeModal)="toggleNappyForm()"
+  (newNappy)="fetchUpdatedNappys($event)"
   [visible]="nappyFormVisible"
 ></app-nappy-form>
